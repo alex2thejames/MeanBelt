@@ -1,0 +1,18 @@
+<style>
+    a {
+        float: right;
+        margin-right: 100px;
+    }
+    h4 {
+        color: gray;
+        border-bottom: 2px solid black;
+    }
+</style>
+<a [routerLink]="['/']">Home</a>
+<h3>Details about {{currPet.name}}</h3>
+<h3>Pet type:</h3> <h4>{{currPet.type}}</h4>
+<h3>Description:</h3> <h4>{{currPet.description}}</h4>
+<h3>Skills:</h3> <h4>{{currPet.skill1}}</h4><h4 *ngIf="currPet.skill2">{{currPet.skill2}}</h4><h4 *ngIf="currPet.skill3">{{currPet.skill3}}</h4>
+<h3>Likes:</h3> <h4>{{currPet.likes}}</h4>
+<button (click)="adoptPet(currPet._id)">Adopt this pet!</button>
+<button (click)="likePet(currPet._id); clicked = true;" [disabled]="clicked">Like this pet!</button>

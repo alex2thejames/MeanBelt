@@ -1,0 +1,51 @@
+<style>
+    .red {
+        color: red;
+        font-weight: 500;
+        text-decoration: underline;
+        font-size: 20px;
+    }
+</style>
+<h3>Know of a pet needing a home?</h3>
+<form>
+    <div class='red' *ngIf="name.invalid && (name.dirty || name.untouched)">
+        <div *ngIf="name.errors && name.errors.minlength">
+            Pet Name must be at least 3 characters long.
+        </div>
+        <div *ngIf="name.errors.required">
+            Pet Name is required.
+        </div>
+    </div>
+    <div class='red' *ngIf="type.invalid && (type.dirty || type.untouched)">
+        <div *ngIf="type.errors && type.errors.minlength">
+            Pet Type must be at least 3 characters long.
+        </div>
+        <div *ngIf="type.errors.required">
+            Pet Type is required.
+        </div>
+    </div>
+    <div class='red' *ngIf="description.invalid && (description.dirty || description.untouched)">
+        <div *ngIf="description.errors && description.errors.minlength">
+            Pet Description must be at least 3 characters long.
+        </div>
+        <div *ngIf="description.errors.required">
+            Pet Description is required.
+        </div>
+    </div>
+    <h3>Pet name:</h3>
+    <input type="text" name="name" [(ngModel)]="currPet.name" required minlength="3" #name="ngModel"/><br>
+    <h3>Pet type:</h3>
+    <input type="text" name="type" [(ngModel)]="currPet.type" required minlength="3" #type="ngModel"/><br>
+    <h3>Description:</h3>
+    <input type="text" name="description" [(ngModel)]="currPet.description" required minlength="3" #description="ngModel"/><br>
+    <h3>Skills:</h3>
+    <h4>Skill 1:</h4>
+    <input type="text" name="skill1" [(ngModel)]="currPet.skill1" /><br>
+    <h4>Skill 2:</h4>
+    <input type="text" name="skill2" [(ngModel)]="currPet.skill2" /><br>
+    <h4>Skill 3:</h4>
+    <input type="text" name="skill3" [(ngModel)]="currPet.skill3" /><br>
+    <button *ngIf="!name.errors && !description.errors && !type.errors" (click)="updateCurrPet()">Edit Pet</button>
+</form>
+<button [routerLink]="['/pets']">Cancel</button>
+
